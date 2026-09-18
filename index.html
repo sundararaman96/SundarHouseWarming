@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f0df"><title>Sundar & Family — House Warming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Italianno&family=Noto+Sans+Tamil:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+<section id="cover">
+  <img src="assets/opening-thamboolam.jpg" class="thamboolam" alt="Traditional thamboolam plate and house warming invitation">
+  <button id="seal" aria-label="Open the house warming invitation"></button>
+</section>
+
+<main>
+<section class="intro section">
+ <div class="intro-stage" id="introStage">
+   <div class="opening-title" id="openingTitle">
+     <p class="eyebrow">YOU'RE INVITED TO OUR</p>
+     <h1>HOUSE WARMING</h1>
+     <p class="date">FRIDAY · 2 OCTOBER 2026</p>
+     <p class="time">6:00 PM</p>
+   </div>
+
+   <div class="blessing" id="blessing">
+     <p class="tamil">அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை<br>பண்பும் பயனும் அது.</p>
+     <small>— திருக்குறள் 45</small>
+     <div class="divider">❦</div>
+     <blockquote>“My people will live in peaceful dwelling places,<br>in secure homes,<br>in undisturbed places of rest.”</blockquote>
+     <small>— Isaiah 32:18</small>
+   </div>
+
+   <div class="house-full" id="houseFull"><img src="assets/house.jpg" alt="Our new home"></div>
+   <button class="house-thumb" id="houseThumb" aria-label="View full photograph of our new home">
+      <img src="assets/house.jpg" alt=""><span>View Our Home</span>
+   </button>
+
+   <div class="invite-message" id="inviteMessage">
+      <p class="eyebrow">WITH GRATEFUL HEARTS</p>
+      <h2>Sundar &amp; Family</h2>
+      <p class="copy">warmly invite you and your family to join us in prayer, thanksgiving and celebration as we dedicate our new home.</p>
+
+      <div class="event-ribbon">
+        <a class="event-tile" target="_blank" rel="noopener" aria-label="Add house warming to Google Calendar"
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sundar%20%26%20Family%20House%20Warming&dates=20261002T080000Z%2F20261002T120000Z&details=Please%20join%20us%20for%20prayer%2C%20thanksgiving%20and%20our%20house%20warming%20celebration.&location=1%2F24%20Blair%20Street%2C%20Ripley%2C%20QLD%204306">
+          <span class="event-icon">📅</span><small>ADD TO CALENDAR</small><strong>2 OCT</strong><em>Friday · 6:00 PM</em>
+        </a>
+        <a class="event-tile" target="_blank" rel="noopener" aria-label="Open 1/24 Blair Street Ripley in Google Maps"
+        href="https://www.google.com/maps/dir/?api=1&destination=1%2F24%20Blair%20Street%2C%20Ripley%2C%20QLD%204306">
+          <span class="event-icon">📍</span><small>GET DIRECTIONS</small><strong>1/24 Blair St</strong><em>Ripley · QLD 4306</em>
+        </a>
+      </div>
+   </div>
+ </div>
+</section>
+
+<section class="program section">
+ <div class="card reveal">
+   <p class="eyebrow">ORDER OF CELEBRATION</p><h2>Our House Blessing</h2>
+   <div class="order">
+     <div><b>01</b><span>Worship</span></div>
+     <div><b>02</b><span>House Prayer</span></div>
+     <div><b>03</b><span><i>Paal Kaaichudhal</i><small>Traditional boiling of milk</small></span></div>
+     <div><b>04</b><span>Blessing Message for Our New Home</span></div>
+     <div><b>05</b><span>Prayer of Thanksgiving for the Meal</span></div>
+   </div>
+ </div>
+</section>
+
+<section class="gift section">
+ <div class="card reveal">
+   <div class="plant">🪴</div><p class="script">Your presence is my present.</p>
+   <p>If you would like to bring a gift, a plant would mean a lot to me — something that can grow with my new home and remind me of you whenever I see it.</p>
+ </div>
+</section>
+
+<section class="wishes section">
+ <div class="card reveal"><div class="gold">♥</div><p class="script">With Love</p>
+ <h2>Wishes &amp; Blessings</h2>
+ <p>May this home always be filled with faith, love, laughter, peace and cherished memories.</p>
+ <p>We look forward to celebrating this new beginning with you.</p>
+ <div class="leafline">❦ — ♥ — ❦</div><strong>Sundar &amp; Family</strong><br>
+ <button id="share">Share Invitation</button></div>
+</section>
+</main>
+
+<div class="house-modal" id="houseModal" aria-hidden="true"><button id="modalClose" aria-label="Close house image">×</button><img src="assets/house.jpg" alt="Our new home"></div>
+<script src="script.js"></script></body></html>
