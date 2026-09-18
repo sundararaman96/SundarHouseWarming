@@ -1,0 +1,17 @@
+const q=s=>document.querySelector(s), wait=(ms,f)=>setTimeout(f,ms);
+const seal=q("#seal"),cover=q("#cover"),paper=q("#paper"),eventCard=q("#event"),tamil=q("#tamil"),bible=q("#bible"),dock=q("#dock"),house=q("#houseStage"),thumb=q("#houseThumb"),details=q("#details");
+seal.onclick=()=>{seal.disabled=true;seal.classList.add("fade");
+wait(520,()=>{cover.classList.add("gone");document.body.classList.remove("locked");document.body.classList.add("open");paper.classList.add("rise")});
+wait(1250,()=>eventCard.classList.add("show"));
+wait(3500,()=>eventCard.classList.add("hide"));
+wait(4100,()=>tamil.classList.add("show"));
+wait(6500,()=>{tamil.classList.remove("show");tamil.classList.add("hide")});
+wait(7000,()=>bible.classList.add("show"));
+wait(9900,()=>{bible.classList.remove("show");bible.classList.add("hide")});
+wait(10400,()=>dock.classList.add("show"));
+wait(10900,()=>house.classList.add("show"));
+wait(13200,()=>{house.classList.add("hide");thumb.classList.add("show")});
+wait(14000,()=>details.classList.add("show"));
+};
+const modal=q("#modal");thumb.onclick=()=>modal.classList.add("show");q("#close").onclick=()=>modal.classList.remove("show");modal.onclick=e=>{if(e.target===modal)modal.classList.remove("show")};
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("visible")),{threshold:.15});document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
