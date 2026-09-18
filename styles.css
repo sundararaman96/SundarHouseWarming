@@ -1,0 +1,521 @@
+*{box-sizing:border-box}html,body{margin:0;width:100%;max-width:100%;overflow-x:hidden}html{scroll-behavior:smooth}:root{--cream:#faf3e4;--paper:#fffdf7;--green:#21462b;--gold:#b57a20;--ink:#26342b}body{background:var(--cream);color:var(--ink);font-family:Inter,sans-serif;text-align:center}.locked{overflow:hidden}.section{width:100%;min-height:100svh;display:grid;place-items:center;padding:36px 16px}.eyebrow{letter-spacing:.2em;font-size:.68rem;font-weight:600}.script{font:400 4.2rem/.8 Italianno;color:var(--green)}button,.btn{border:0;border-radius:999px;background:#2e713a;color:#fff;padding:15px 22px;font-weight:600;text-decoration:none;cursor:pointer}
+
+#cover{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 20%,#fffdf8,#f0e4cc);display:grid;place-items:center;padding:18px;transition:opacity .8s,visibility .8s}.cover-inner{width:min(480px,100%);padding:28px 18px}.cover-inner h1{font:400 clamp(4rem,17vw,6rem)/.85 Italianno;color:var(--green);margin:.25em 0}.cover-inner h2{font:600 2.2rem "Cormorant Garamond";margin:.2em}.cover-inner>p:not(.eyebrow,.tap){font:500 1.1rem/1.45 "Cormorant Garamond";max-width:390px;margin:15px auto}.tap{font-size:.78rem;letter-spacing:.05em;margin-top:16px}.cover-open{opacity:0;visibility:hidden;pointer-events:none}
+.envelope{position:relative;width:min(350px,88vw);height:225px;margin:28px auto 8px;filter:drop-shadow(0 18px 24px #604a2630);perspective:900px}.back{position:absolute;inset:0;background:#e8d4aa;border-radius:8px}.letter{position:absolute;left:7%;right:7%;bottom:6%;height:84%;z-index:2;background:#fffdf5;display:flex;flex-direction:column;justify-content:center;border-radius:5px;transition:transform 1s .25s}.letter span{font:600 1.5rem "Cormorant Garamond";color:var(--green)}.letter small{margin-top:7px;letter-spacing:.12em}.front{position:absolute;inset:0;z-index:4;background:linear-gradient(35deg,#f3e4c7 49.5%,transparent 50%) bottom/100% 72% no-repeat,linear-gradient(145deg,transparent 49%,#dec89d 50%) left/50% 100% no-repeat,linear-gradient(215deg,transparent 49%,#e4cfa6 50%) right/50% 100% no-repeat}.flap{position:absolute;inset:0 0 auto;height:62%;z-index:5;background:#f5e7cb;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s}.seal{position:absolute;z-index:8;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;padding:0;background:linear-gradient(#e0ad3b,#a96b13);border:3px solid #f5d47c;font-size:1.6rem;box-shadow:0 4px 12px #0003}.envelope.open .flap{transform:rotateX(180deg);z-index:1}.envelope.open .letter{transform:translateY(-92px)}.envelope.open .seal{opacity:0}
+
+#confetti{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}.conf{position:absolute;top:-20px;width:8px;height:14px;animation:fall var(--t) linear forwards}@keyframes fall{to{transform:translate(var(--x),110vh) rotate(720deg);opacity:.1}}
+
+.intro{background:radial-gradient(circle at 50% 10%,#fffdf8,#efe2c8);padding-top:18px;padding-bottom:18px}.intro-stage{width:min(720px,100%);min-height:94svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.blessing{width:100%;transition:all 1.1s cubic-bezier(.2,.8,.2,1)}.blessing .tamil{font-family:"Noto Sans Tamil";font-weight:600;color:var(--green);font-size:clamp(1.1rem,5vw,1.5rem)}.blessing blockquote{font:italic 600 clamp(1.8rem,7vw,2.8rem)/1.08 "Cormorant Garamond";margin:18px auto 8px}.blessing small{font-family:"Cormorant Garamond";font-style:italic;font-size:1rem}.intro-stage.ready .blessing{position:absolute;top:10px;transform:scale(.62);transform-origin:top center}.invite{width:100%;max-width:650px;opacity:0;transform:translateY(28px);transition:opacity .9s .35s,transform .9s .35s}.intro-stage.ready .invite{opacity:1;transform:none;padding-top:115px}.invite h1{font:600 clamp(3rem,13vw,5.4rem)/.9 "Cormorant Garamond";color:#9b6114;margin:.12em 0}.invite h2{font:600 clamp(2.5rem,10vw,4rem) "Cormorant Garamond";color:var(--green);margin:.1em}.invite>p{margin:8px}.copy{font:500 1.12rem/1.5 "Cormorant Garamond";max-width:580px;margin:8px auto!important}.heart,.gold,.leafline{color:var(--gold)}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px auto;width:100%}.facts div{padding:12px 5px;border-right:1px solid #d4b982}.facts div:last-child{border:0}.facts b{display:block;font:600 2rem "Cormorant Garamond";color:var(--green)}.facts span{display:block;font-size:.67rem;line-height:1.35}
+
+.house{min-height:auto;padding:42px 16px 60px}.house-card{position:relative;width:min(760px,100%);border-radius:28px;overflow:hidden;box-shadow:0 20px 55px #4d3e2225}.house-card img{display:block;width:100%;height:auto}.house-card div{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:#fffdf1e9;border-radius:999px;padding:10px 22px;font:600 1.35rem "Cormorant Garamond";white-space:nowrap}
+
+.rsvp{background:#f0ead7}.card{width:min(650px,100%);background:#fffdf7;padding:36px 20px;border-radius:28px;border:1px solid #d8c39a;box-shadow:0 20px 60px #4d3e221c}.card h2,.countdown h2{font:600 clamp(3rem,12vw,4.7rem) "Cormorant Garamond";color:var(--green);margin:.1em}.card>p{line-height:1.5}form{display:grid;gap:11px;margin-top:22px}input,select,textarea{width:100%;padding:14px;border:1px solid #d0c3a6;border-radius:12px;background:white;font:inherit}textarea{min-height:86px}form button{width:100%}
+
+.countdown{background:#fff9ed}.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(600px,100%);margin:28px auto}.count div{border:1px solid #d6c5a4;border-radius:15px;padding:16px 5px}.count b{display:block;font:600 2.3rem "Cormorant Garamond";color:var(--green)}.count span{font:500 .72rem "Cormorant Garamond"}.wishes{min-height:85svh;background:radial-gradient(circle,#fffdf8,#eee2ca)}.wishes .script{margin:.4em}.wishes .gold{font-size:1.5rem}.wishes .leafline{font-size:1.4rem;margin:25px}.memory{font-size:.7rem;letter-spacing:.16em}.reveal{opacity:0;transform:translateY(22px);transition:.8s}.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:600px){.section{padding-left:14px;padding-right:14px}.cover-inner{padding-left:6px;padding-right:6px}.intro-stage.ready .blessing{transform:scale(.52)}.intro-stage.ready .invite{padding-top:105px}.facts{grid-template-columns:1fr;max-width:350px}.facts div{border-right:0;border-bottom:1px solid #d4b982}.facts div:last-child{border:0}.count{grid-template-columns:repeat(2,1fr);max-width:350px}.house-card{border-radius:22px}.blessing blockquote{padding:0 5px}}@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.conf{display:none}}
+/* Seal click -> envelope fades away -> invitation appears */
+#cover{
+  transition:opacity 1.05s ease, visibility 1.05s ease;
+}
+#cover.fading{
+  opacity:0;
+  pointer-events:none;
+}
+#cover.cover-open{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+main{
+  opacity:0;
+  transition:opacity 1s ease;
+}
+body.invitation-visible main{
+  opacity:1;
+}
+
+
+/* FINAL CINEMATIC OPENING */
+.seal{
+  transition:opacity .42s ease, transform .42s ease;
+}
+.seal.seal-fade{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.58);
+  pointer-events:none;
+}
+
+/* Keep everything centred and inside the viewport */
+.intro{
+  min-height:100svh;
+  width:100%;
+  padding:0;
+  overflow:hidden;
+}
+.intro-stage{
+  position:relative;
+  width:100%;
+  max-width:none;
+  min-height:100svh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Tamil praise + verse */
+.blessing{
+  position:relative;
+  z-index:8;
+  width:min(700px,94vw);
+  padding:18px 12px;
+  transition:transform 1.05s cubic-bezier(.2,.8,.2,1),
+             top 1.05s ease,
+             color .8s ease;
+}
+.blessing .tamil{
+  margin:0 0 18px;
+}
+.intro-stage.ready .blessing{
+  position:absolute;
+  top:5px;
+  transform:scale(.50);
+  transform-origin:top center;
+}
+
+/* House arrives only after blessing shrinks */
+.hero-house{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:scale(1.045);
+  transition:opacity 1s ease, transform 1.2s ease;
+}
+.intro-stage.house-visible .hero-house{
+  opacity:1;
+  transform:scale(1);
+}
+.hero-house img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+
+/* Gentle fade/dim over house before invitation appears */
+.house-shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(248,242,226,.12),
+      rgba(30,45,31,.30));
+  opacity:0;
+  transition:opacity 1s ease;
+}
+.intro-stage.invite-visible .house-shade{
+  opacity:1;
+}
+
+/* Invitation appears directly over house */
+.invite-overlay{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:56%;
+  width:min(650px,92vw);
+  padding:24px 18px;
+  border:1px solid rgba(210,183,125,.72);
+  border-radius:28px;
+  background:rgba(255,253,247,.86);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  box-shadow:0 22px 70px rgba(24,37,27,.24);
+  opacity:0;
+  transform:translate(-50%,-45%) scale(.95);
+  transition:opacity 1s ease, transform 1s ease;
+}
+.intro-stage.invite-visible .invite-overlay{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+.invite-overlay h1{
+  margin:.08em 0;
+  color:#995f13;
+  font:600 clamp(2.7rem,12vw,5.1rem)/.88 "Cormorant Garamond";
+}
+.invite-overlay h2{
+  margin:.08em 0;
+  color:var(--green);
+  font:600 clamp(2.15rem,9vw,3.6rem) "Cormorant Garamond";
+}
+.invite-overlay .with{
+  margin:8px 0 0;
+}
+.invite-overlay .copy{
+  max-width:560px;
+  margin:7px auto!important;
+  font:500 1.08rem/1.45 "Cormorant Garamond";
+}
+.invite-overlay .facts{
+  width:100%;
+  margin:17px auto;
+}
+
+/* Mobile-safe layout */
+@media(max-width:600px){
+  .intro-stage.ready .blessing{
+    top:2px;
+    transform:scale(.41);
+  }
+  .hero-house img{
+    object-position:center center;
+  }
+  .invite-overlay{
+    top:57%;
+    width:94vw;
+    padding:19px 12px;
+    border-radius:23px;
+  }
+  .invite-overlay .facts{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:2px;
+  }
+  .invite-overlay .facts b{
+    font-size:1.45rem;
+  }
+  .invite-overlay .facts span{
+    font-size:.54rem;
+  }
+  .invite-overlay .copy{
+    font-size:.96rem;
+  }
+}
+
+/* FINAL REQUESTED OPENING FLOW */
+
+/* Remove browser focus/blue tap box from the round seal while keeping accessible focus */
+.seal{
+  outline:none!important;
+  -webkit-tap-highlight-color:transparent;
+  appearance:none;
+  -webkit-appearance:none;
+  border:3px solid #f5d47c!important;
+}
+.seal:focus{outline:none!important}
+.seal:focus-visible{box-shadow:0 0 0 3px #fff7d6,0 0 0 6px #a96b13}
+
+/* Blessing shrinks once */
+.intro-stage.ready .blessing{
+  position:absolute;
+  top:4px;
+  transform:scale(.48);
+  transform-origin:top center;
+}
+
+/* House appears at its natural size: NO zoom animation */
+.house-full{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(820px,94vw);
+  opacity:0;
+  transform:translate(-50%,-50%);
+  transition:opacity .8s ease;
+  z-index:3;
+}
+.house-full img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:68svh;
+  object-fit:contain;
+  border-radius:24px;
+  box-shadow:0 20px 55px rgba(31,48,34,.20);
+}
+.intro-stage.house-visible .house-full{opacity:1}
+
+/* Then full house disappears and a small clickable house button appears */
+.intro-stage.house-collapsed .house-full{
+  opacity:0;
+  pointer-events:none;
+}
+.house-thumb{
+  position:absolute;
+  top:104px;
+  left:50%;
+  z-index:9;
+  width:126px;
+  padding:5px;
+  opacity:0;
+  transform:translateX(-50%);
+  background:#fffdf6;
+  border:1px solid #caa35f;
+  border-radius:16px;
+  box-shadow:0 9px 25px rgba(40,48,35,.18);
+  color:var(--green);
+  transition:opacity .7s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.house-thumb img{
+  display:block;
+  width:100%;
+  height:68px;
+  object-fit:cover;
+  border-radius:11px;
+}
+.house-thumb span{
+  display:block;
+  padding:6px 2px 3px;
+  font:600 .72rem "Cormorant Garamond";
+}
+.intro-stage.house-collapsed .house-thumb{opacity:1}
+
+/* House Warming invitation appears after thumbnail is ready */
+.invite-message{
+  width:min(650px,94vw);
+  padding:24px 18px;
+  margin-top:150px;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .85s ease,transform .85s ease;
+  z-index:5;
+}
+.intro-stage.invite-visible .invite-message{
+  opacity:1;
+  transform:none;
+}
+.invite-message h1{
+  font:600 clamp(2.8rem,12vw,5.2rem)/.88 "Cormorant Garamond";
+  color:#995f13;
+  margin:.1em 0;
+}
+.invite-message h2{
+  font:600 clamp(2.2rem,9vw,3.7rem) "Cormorant Garamond";
+  color:var(--green);
+  margin:.08em 0;
+}
+.invite-message .facts{margin:17px auto}
+
+/* Clickable full-image viewer */
+.house-modal{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(20,27,22,.88);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.house-modal.open{opacity:1;visibility:visible}
+.house-modal img{
+  display:block;
+  max-width:96vw;
+  max-height:88svh;
+  width:auto;
+  height:auto;
+  border-radius:18px;
+  box-shadow:0 25px 80px #0007;
+}
+.modal-close{
+  position:absolute;
+  top:max(18px,env(safe-area-inset-top));
+  right:18px;
+  width:46px;height:46px;padding:0;
+  border-radius:50%;
+  background:#fffdf4;
+  color:#244329;
+  font-size:1.8rem;
+  line-height:1;
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media(max-width:600px){
+  .intro-stage.ready .blessing{transform:scale(.40);top:1px}
+  .house-full{width:94vw}
+  .house-full img{max-height:62svh}
+  .house-thumb{top:92px;width:112px}
+  .house-thumb img{height:60px}
+  .invite-message{margin-top:145px;padding:18px 10px}
+  .invite-message .facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+  .invite-message .facts b{font-size:1.45rem}
+  .invite-message .facts span{font-size:.54rem}
+  .invite-message .copy{font-size:.98rem}
+}
+
+/* Interactive date and location */
+.facts .fact-link{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:inherit;
+  text-decoration:none;
+  padding:12px 5px;
+  border-right:1px solid #d4b982;
+  border-radius:12px;
+  transition:background .2s ease,transform .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.facts .fact-link:hover,
+.facts .fact-link:focus-visible{
+  background:rgba(181,122,32,.09);
+  transform:translateY(-1px);
+  outline:none;
+}
+.facts .fact-link em{
+  display:block;
+  margin-top:6px;
+  color:#9a6419;
+  font:600 .58rem Inter,sans-serif;
+  letter-spacing:.04em;
+  font-style:normal;
+}
+.facts .location-link{
+  border-right:0;
+}
+.map-pin{
+  font-size:2rem!important;
+  line-height:1;
+}
+@media(max-width:600px){
+  .facts .fact-link{padding:10px 3px}
+  .facts .fact-link em{font-size:.51rem}
+}
+
+/* Elegant event controls */
+.event-ribbon{
+ width:min(610px,100%);margin:22px auto 18px;
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:9px;
+}
+.event-tile{
+ min-width:0;min-height:112px;padding:12px 7px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:6px;text-decoration:none;color:var(--ink);
+ background:linear-gradient(160deg,rgba(255,253,247,.96),rgba(246,236,213,.94));
+ border:1px solid rgba(181,122,32,.35);border-radius:18px;
+ box-shadow:0 7px 20px rgba(63,49,24,.08);
+ -webkit-tap-highlight-color:transparent;
+ transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+a.event-tile:hover,a.event-tile:focus-visible{
+ transform:translateY(-2px);box-shadow:0 11px 25px rgba(63,49,24,.14);
+ outline:none;background:#fffaf0;
+}
+.event-icon{
+ display:grid;place-items:center;width:31px;height:31px;border-radius:50%;
+ background:#f1e0ba;color:#9a6419;font-size:1.05rem;
+}
+.event-copy{display:flex;min-width:0;flex-direction:column;align-items:center}
+.event-copy small{font:600 .48rem Inter;letter-spacing:.13em;color:#8e7448}
+.event-copy strong{font:600 1.35rem "Cormorant Garamond";color:var(--green);white-space:nowrap}
+.event-copy em{font:500 .62rem "Cormorant Garamond";font-style:normal;white-space:nowrap}
+.location-tile .event-copy strong{font-size:1.15rem}
+
+/* House visually collapses into its clickable thumbnail */
+.house-full{
+ transition:opacity .55s ease, width .85s cubic-bezier(.2,.8,.2,1),
+            top .85s cubic-bezier(.2,.8,.2,1),
+            left .85s cubic-bezier(.2,.8,.2,1);
+}
+.intro-stage.house-collapsed .house-full{
+ opacity:0;
+}
+.house-thumb{
+ opacity:0;transform:translateX(-50%) scale(.72);
+ transition:opacity .45s ease .35s,transform .7s cubic-bezier(.2,.8,.2,1) .15s;
+}
+.intro-stage.house-collapsed .house-thumb{
+ opacity:1;transform:translateX(-50%) scale(1);
+}
+.house-thumb:after{
+ content:"Tap to view";position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);
+ white-space:nowrap;color:#856329;font:600 .55rem Inter;letter-spacing:.06em;
+}
+@media(max-width:600px){
+ .event-ribbon{gap:6px;margin:18px auto 14px}
+ .event-tile{min-height:102px;padding:10px 4px;border-radius:15px}
+ .event-icon{width:28px;height:28px;font-size:.95rem}
+ .event-copy small{font-size:.42rem;letter-spacing:.09em}
+ .event-copy strong{font-size:1.15rem}
+ .event-copy em{font-size:.54rem}
+ .location-tile .event-copy strong{font-size:1rem}
+}
+
+/* Compact continuous invitation flow — remove unnecessary vertical gaps */
+.intro{
+  min-height:100svh;
+}
+.rsvp,.countdown,.wishes{
+  min-height:auto!important;
+  padding-top:48px!important;
+  padding-bottom:48px!important;
+}
+.rsvp{
+  padding-top:34px!important;
+}
+.countdown{
+  padding-top:42px!important;
+  padding-bottom:42px!important;
+}
+.wishes{
+  padding-top:42px!important;
+  padding-bottom:58px!important;
+}
+
+/* Keep cards close to neighbouring sections */
+.rsvp .card,.wishes .card{
+  margin:0 auto!important;
+}
+.countdown .reveal{
+  margin:0 auto!important;
+  width:min(650px,100%);
+}
+
+/* Reduce internal whitespace without making the invitation crowded */
+.card{
+  padding-top:30px;
+  padding-bottom:30px;
+}
+.card h2,.countdown h2{
+  margin-top:.05em;
+  margin-bottom:.12em;
+}
+.rsvp form{
+  margin-top:18px;
+}
+.count{
+  margin-top:20px;
+  margin-bottom:8px;
+}
+
+/* Smooth visual connection from invitation into RSVP */
+.rsvp{
+  border-top:1px solid rgba(181,122,32,.12);
+}
+.countdown{
+  border-top:1px solid rgba(181,122,32,.12);
+}
+.wishes{
+  border-top:1px solid rgba(181,122,32,.12);
+}
+
+@media(max-width:600px){
+  .rsvp,.countdown,.wishes{
+    min-height:auto!important;
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+  .rsvp{padding-top:24px!important;padding-bottom:32px!important}
+  .countdown{padding-top:30px!important;padding-bottom:32px!important}
+  .wishes{padding-top:30px!important;padding-bottom:44px!important}
+  .card{padding-top:25px;padding-bottom:25px}
+  .count{margin-top:16px;margin-bottom:2px}
+}
