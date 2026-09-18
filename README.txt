@@ -1,1 +1,0 @@
-Clean Netlify build. Upload this ZIP directly to Netlify Drop. Opening artwork is cropped to remove browser/Netlify UI. Animation stages are sequential to prevent text/photo collisions.
