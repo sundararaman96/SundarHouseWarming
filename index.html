@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7efd9">
+  <meta name="description" content="Sundar & Family House Warming — Friday, 2 October 2026 at 6:00 PM">
+  <title>Sundar &amp; Family — House Warming</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Italianno&family=Noto+Sans+Tamil:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+
+  <!-- OPENING THAMBOOLAM SCREEN -->
+  <section id="opening" aria-label="Traditional house warming invitation">
+    <div class="opening-canvas" id="openingCanvas">
+      <img class="opening-art" src="assets/opening-thamboolam.png" alt="Traditional thamboolam plate with fruits, betel leaves, coconut and invitation envelope">
+
+      <!-- We cover the seal baked into the artwork and draw an independent seal above it. -->
+      <button id="sealButton" type="button" aria-label="Open house warming invitation">
+        <span class="seal-mask" aria-hidden="true"></span>
+        <span class="seal-visual" aria-hidden="true"><span class="seal-house">⌂</span></span>
+      </button>
+
+      <!-- Invitation physically rises from the envelope/plate -->
+      <article class="plate-card" id="plateCard" aria-live="polite">
+        <section class="plate-view event-view active" id="eventView">
+          <p class="eyebrow">YOU'RE INVITED TO OUR</p>
+          <h1>HOUSE<br>WARMING</h1>
+          <div class="ornament">❦</div>
+          <p class="event-date">FRIDAY · 2 OCTOBER 2026</p>
+          <p class="event-time">6:00 PM</p>
+        </section>
+
+        <section class="plate-view kural-view" id="kuralView">
+          <p class="tamil">அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை<br>பண்பும் பயனும் அது.</p>
+          <p class="source">— திருக்குறள் 45</p>
+        </section>
+
+        <section class="plate-view bible-view" id="bibleView">
+          <p class="bible">“My people will live in peaceful dwelling places,<br>in secure homes,<br>in undisturbed places of rest.”</p>
+          <p class="source">— Isaiah 32:18</p>
+        </section>
+
+        <section class="plate-view combined-view" id="combinedView">
+          <p class="tamil compact-tamil">அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை<br>பண்பும் பயனும் அது.</p>
+          <p class="source">— திருக்குறள் 45</p>
+          <div class="mini-rule">❦</div>
+          <p class="compact-bible">“My people will live in peaceful dwelling places, in secure homes, in undisturbed places of rest.”</p>
+          <p class="source">— Isaiah 32:18</p>
+        </section>
+      </article>
+
+      <!-- Faux envelope lip gives the impression the card comes out from inside the mail. -->
+      <div class="envelope-lip" id="envelopeLip" aria-hidden="true"></div>
+      <div id="confetti" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- MAIN APP -->
+  <main id="app">
+    <div class="side-border side-left" aria-hidden="true"></div>
+    <div class="side-border side-right" aria-hidden="true"></div>
+
+    <!-- Verses dock safely at the top in normal flow: no overlap with the home image. -->
+    <section class="blessing-dock" id="blessingDock" aria-label="House blessings">
+      <p class="tamil">அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை · பண்பும் பயனும் அது.</p>
+      <small>— திருக்குறள் 45</small>
+      <div class="dock-rule">❦</div>
+      <p>“My people will live in peaceful dwelling places, in secure homes, in undisturbed places of rest.”</p>
+      <small>— Isaiah 32:18</small>
+    </section>
+
+    <!-- The same house image smoothly becomes a compact, clickable medallion. -->
+    <section class="house-section" id="houseSection">
+      <button class="house-media" id="houseMedia" type="button" aria-label="View full photo of our new home">
+        <img src="assets/home-photo.jpg" alt="Sundar standing in front of the new home">
+        <span class="house-label">Our New Home · Tap to View</span>
+      </button>
+    </section>
+
+    <section class="main-invite" id="mainInvite">
+      <p class="eyebrow">WITH GRATEFUL HEARTS</p>
+      <h2>Sundar &amp; Family</h2>
+      <p class="invite-copy">warmly invite you and your family to join us in prayer, thanksgiving and celebration as we dedicate our new home.</p>
+
+      <div class="facts">
+        <div class="fact">
+          <span class="fact-icon" aria-hidden="true">◫</span>
+          <small>DATE</small>
+          <strong>Friday<br>2 October 2026</strong>
+        </div>
+        <div class="fact">
+          <span class="fact-icon" aria-hidden="true">◷</span>
+          <small>TIME</small>
+          <strong>6:00 PM<br>Onwards</strong>
+        </div>
+        <div class="fact">
+          <span class="fact-icon" aria-hidden="true">⌖</span>
+          <small>OUR NEW HOME</small>
+          <strong>1/24 Blair Street<br>Ripley, QLD 4306</strong>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a class="action calendar"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sundar%20%26%20Family%20House%20Warming&dates=20261002T080000Z%2F20261002T120000Z&details=Please%20join%20us%20for%20prayer%2C%20thanksgiving%20and%20our%20house%20warming%20celebration.&location=1%2F24%20Blair%20Street%2C%20Ripley%2C%20QLD%204306"
+           target="_blank" rel="noopener" aria-label="Add house warming to Google Calendar">
+          <span class="action-icon" aria-hidden="true">▣</span>
+          <span>Add to Calendar</span>
+        </a>
+
+        <a class="action map"
+           href="https://www.google.com/maps/dir/?api=1&destination=1%2F24%20Blair%20Street%2C%20Ripley%2C%20QLD%204306"
+           target="_blank" rel="noopener" aria-label="Get directions to 1/24 Blair Street Ripley">
+          <span class="action-icon" aria-hidden="true">⌖</span>
+          <span>Get Directions</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section events-section">
+      <div class="panel reveal">
+        <p class="section-label">ORDER OF EVENTS</p>
+        <div class="event-list">
+          <div class="event-row"><b>1</b><span>Opening Prayer</span></div>
+          <div class="event-row"><b>2</b><span>Worship</span></div>
+          <div class="event-row"><b>3</b><span>Message</span></div>
+          <div class="event-row"><b>4</b><span>Testimony</span></div>
+          <div class="event-row"><b>5</b><span>Closing Prayer</span></div>
+          <div class="event-row"><b>6</b><span>Benediction</span></div>
+          <div class="event-row"><b>7</b><span><i>பால் kaaichudhal</i><small>Traditional boiling of milk</small></span></div>
+          <div class="event-row"><b>8</b><span>Dinner</span></div>
+          <div class="event-row"><b>9</b><span>Fellowship</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section gift-section">
+      <div class="panel reveal gift-panel">
+        <p class="section-label">GIFTS</p>
+        <div class="gift-layout">
+          <div class="gift-plant" aria-hidden="true">
+            <svg viewBox="0 0 160 180" focusable="false">
+              <defs>
+                <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#72b663"/>
+                  <stop offset="55%" stop-color="#3d7e45"/>
+                  <stop offset="100%" stop-color="#245436"/>
+                </linearGradient>
+                <linearGradient id="leafB" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#91c973"/>
+                  <stop offset="55%" stop-color="#4f914a"/>
+                  <stop offset="100%" stop-color="#30643a"/>
+                </linearGradient>
+                <linearGradient id="pot" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c77b48"/>
+                  <stop offset="100%" stop-color="#8f4e2e"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="80" cy="165" rx="46" ry="8" fill="rgba(0,0,0,.13)"/>
+              <path d="M78 98 C60 80,56 56,70 37 C82 53,84 76,78 98Z" fill="url(#leafA)"/>
+              <path d="M94 104 C112 83,121 58,110 35 C95 50,89 76,94 104Z" fill="url(#leafB)"/>
+              <path d="M55 108 C34 96,27 74,34 55 C54 65,63 84,55 108Z" fill="url(#leafB)"/>
+              <path d="M108 112 C131 101,139 78,132 57 C111 67,100 88,108 112Z" fill="url(#leafA)"/>
+              <path d="M73 120 C61 111,57 96,63 82 C76 90,81 105,73 120Z" fill="url(#leafB)"/>
+              <path d="M90 124 C103 115,109 99,103 84 C90 92,84 107,90 124Z" fill="url(#leafA)"/>
+              <path d="M79 86 C78 108,78 122,78 139" stroke="#5d8743" stroke-width="4" stroke-linecap="round"/>
+              <path d="M92 88 C92 108,91 124,90 140" stroke="#5d8743" stroke-width="4" stroke-linecap="round"/>
+              <path d="M46 118 H114 L105 160 H55 Z" fill="url(#pot)"/>
+              <ellipse cx="80" cy="118" rx="35" ry="7" fill="#704022"/>
+              <ellipse cx="80" cy="117" rx="32" ry="5.5" fill="#4b2f1c"/>
+              <path d="M50 119 H110" stroke="#da9d68" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="gift-copy-wrap">
+            <p class="gift-lead">Your presence is my present.</p>
+            <p class="gift-copy">If you would like to bring a gift, a plant would mean a lot to me — something that can grow with my new home and remind me of you whenever I see it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section closing-section">
+      <div class="panel reveal closing-panel">
+        <p class="script-title">With Love</p>
+        <h3>Sundar &amp; Family</h3>
+        <div class="divider">❦</div>
+        <p>We look forward to celebrating this new chapter with you.</p>
+        <p class="memory">A NEW HOME · NEW MEMORIES · SAME WONDERFUL PEOPLE</p>
+        <button id="shareButton" type="button">Share Invitation</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full house photo modal -->
+  <div class="house-modal" id="houseModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close house photo">×</button>
+    <img src="assets/home-photo.jpg" alt="Full photo of Sundar standing in front of the new home">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
