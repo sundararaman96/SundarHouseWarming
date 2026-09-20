@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4ead7" />
+  <meta name="description" content="House warming invitation from Sundar & Family" />
+  <title>House Warming — Sundar & Family</title>
+  <style>
+    :root{
+      --ivory:#fff9ed;
+      --cream:#f5e7cd;
+      --cream-2:#ecd7b5;
+      --wine:#8c1730;
+      --wine-deep:#671020;
+      --gold:#bb8740;
+      --gold-soft:#d9bd83;
+      --green:#355b3a;
+      --ink:#3d2b24;
+      --muted:#7f6557;
+      --shadow:0 22px 70px rgba(71,44,21,.22);
+      --serif: Georgia, 'Times New Roman', serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#ead8bb}
+    body{
+      margin:0;
+      min-height:100%;
+      font-family:var(--serif);
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%,rgba(255,255,255,.8),transparent 24rem),
+        linear-gradient(145deg,#fffaf0,#ead7b6);
+    }
+    button,a{font:inherit}
+    button{color:inherit}
+    .hidden{display:none!important}
+
+    /* App frame: mobile-first like the reference microsite, but usable on desktop. */
+    .app-shell{
+      position:relative;
+      width:min(100%,480px);
+      margin:0 auto;
+      min-height:100dvh;
+      background:var(--ivory);
+      overflow:hidden;
+      box-shadow:0 0 80px rgba(82,50,21,.16);
+    }
+
+    .paper-noise::after{
+      content:"";
+      pointer-events:none;
+      position:absolute;
+      inset:0;
+      opacity:.16;
+      mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    }
+
+    /* ---------- ENTRANCE ---------- */
+    .entrance{
+      position:fixed;
+      z-index:100;
+      inset:0;
+      width:min(100%,480px);
+      margin:auto;
+      min-height:100dvh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:space-between;
+      padding:clamp(22px,5vh,46px) 18px max(22px,env(safe-area-inset-bottom));
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 22%,rgba(255,255,255,.95),rgba(255,248,235,.72) 35%,transparent 60%),
+        linear-gradient(145deg,#f8ecd8,#eedab7);
+      transition:opacity .7s ease,visibility .7s linear,filter .7s ease;
+    }
+    .entrance.exit{
+      opacity:0;
+      visibility:hidden;
+      filter:blur(5px);
+      pointer-events:none;
+    }
+
+    .corner-flower{
+      position:absolute;
+      width:190px;
+      height:190px;
+      opacity:.88;
+      pointer-events:none;
+    }
+    .corner-flower.tl{left:-72px;top:-58px;transform:rotate(-18deg)}
+    .corner-flower.br{right:-78px;bottom:-66px;transform:rotate(165deg)}
+
+    .entrance-copy{
+      position:relative;
+      z-index:3;
+      text-align:center;
+      color:var(--wine);
+    }
+    .eyebrow{
+      font-size:11px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:#82614e;
+      margin-bottom:10px;
+    }
+    .entrance-copy h1{
+      margin:0;
+      font-weight:500;
+      font-size:clamp(24px,7vw,34px);
+      line-height:1.1;
+    }
+    .divider{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      color:var(--wine);
+      margin:11px auto;
+      width:min(230px,70vw);
+    }
+    .divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,currentColor)}
+    .divider::after{background:linear-gradient(90deg,currentColor,transparent)}
+    .divider span{font-size:15px;line-height:1}
+    .family{font-size:14px;color:#76523f;letter-spacing:.05em}
+
+    .ceremony-stage{
+      position:relative;
+      z-index:4;
+      width:min(390px,94vw);
+      height:min(430px,54dvh);
+      min-height:330px;
+      display:grid;
+      place-items:center;
+    }
+
+    .thali{
+      position:absolute;
+      width:min(355px,89vw);
+      aspect-ratio:1;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(255,244,201,.4) 0 52%,transparent 53%),
+        radial-gradient(circle at 50% 50%,#e4bc67 0 57%,#a87429 58% 60%,#e8c878 61% 65%,#7f5524 66% 68%,#d5a44f 69% 71%,transparent 72%);
+      box-shadow:0 14px 30px rgba(110,71,27,.23),inset 0 0 22px rgba(255,251,212,.55);
+    }
+    .thali::after{
+      content:"";
+      position:absolute;inset:12%;border-radius:50%;
+      background:radial-gradient(circle at 40% 25%,rgba(255,255,255,.36),transparent 35%),linear-gradient(145deg,#e1bd76,#c89444);
+      box-shadow:inset 0 0 24px rgba(109,65,19,.20);
+    }
+
+    .botanical{position:absolute;z-index:2;inset:0;pointer-events:none}
+    .leaf{position:absolute;width:68px;height:34px;border-radius:100% 0 100% 0;background:linear-gradient(145deg,#507a48,#1e4930);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+    .leaf::after{content:"";position:absolute;left:8px;right:8px;top:50%;height:1px;background:rgba(241,235,182,.55);transform:rotate(-25deg)}
+    .l1{left:42px;bottom:65px;transform:rotate(-35deg)}
+    .l2{left:92px;bottom:38px;transform:rotate(12deg)}
+    .l3{right:46px;bottom:60px;transform:rotate(-2deg)}
+    .l4{right:55px;top:58px;transform:rotate(115deg)}
+    .l5{left:48px;top:68px;transform:rotate(55deg)}
+    .coconut{position:absolute;z-index:3;right:78px;top:59px;width:71px;height:92px;border-radius:48% 48% 42% 42%;transform:rotate(14deg);background:radial-gradient(circle at 38% 18%,#a98157 0 4px,transparent 5px),repeating-linear-gradient(90deg,#81552f 0 4px,#9c7048 4px 8px);box-shadow:0 4px 8px rgba(45,25,10,.22)}
+    .banana{position:absolute;z-index:3;left:38px;top:92px;width:72px;height:112px;border:15px solid #e1c949;border-right-color:transparent;border-top-color:transparent;border-radius:80% 15% 80% 80%;transform:rotate(20deg);filter:drop-shadow(0 4px 3px rgba(40,30,10,.15))}
+    .banana::after{content:"";position:absolute;width:43px;height:72px;border:12px solid #d3ba35;border-right-color:transparent;border-top-color:transparent;border-radius:80% 15% 80% 80%;left:10px;top:8px}
+    .apple{position:absolute;z-index:3;left:26px;bottom:72px;width:48px;height:48px;border-radius:50% 52% 48% 54%;background:radial-gradient(circle at 32% 25%,#f5a18f 0 8%,#bf3142 30%,#8e172c 85%);box-shadow:0 5px 8px rgba(75,20,20,.22)}
+    .apple::before{content:"";position:absolute;width:4px;height:16px;background:#4e3521;left:25px;top:-10px;transform:rotate(14deg)}
+
+    .petal{position:absolute;z-index:4;width:19px;height:31px;border-radius:80% 0 80% 0;background:linear-gradient(#b7132e,#760d20);filter:drop-shadow(0 3px 2px rgba(70,0,10,.15))}
+    .p1{right:16px;top:112px;transform:rotate(28deg)}
+    .p2{right:30px;bottom:34px;transform:rotate(-11deg)}
+    .p3{left:22px;top:27px;transform:rotate(82deg)}
+    .p4{left:79px;bottom:12px;transform:rotate(42deg)}
+
+    .daisy{position:absolute;z-index:4;width:30px;height:30px}
+    .daisy span{position:absolute;left:12px;top:1px;width:7px;height:14px;border-radius:70% 70% 60% 60%;background:#fffef6;transform-origin:3px 14px;box-shadow:0 1px 2px rgba(120,90,40,.12)}
+    .daisy span:nth-child(1){transform:rotate(0)}.daisy span:nth-child(2){transform:rotate(60deg)}.daisy span:nth-child(3){transform:rotate(120deg)}.daisy span:nth-child(4){transform:rotate(180deg)}.daisy span:nth-child(5){transform:rotate(240deg)}.daisy span:nth-child(6){transform:rotate(300deg)}
+    .daisy::after{content:"";position:absolute;left:11px;top:10px;width:9px;height:9px;border-radius:50%;background:#e6bd4a}
+    .d1{right:30px;top:76px}.d2{left:48px;bottom:38px}.d3{right:72px;bottom:26px}
+
+    /* CSS envelope — seal is actually centred on the flap, not an overlay on a screenshot. */
+    .envelope-wrap{
+      position:absolute;
+      z-index:10;
+      left:50%;
+      top:56%;
+      width:min(255px,67vw);
+      height:164px;
+      transform:translate(-50%,-50%);
+      perspective:900px;
+      filter:drop-shadow(0 18px 18px rgba(78,48,18,.19));
+    }
+    .envelope-body{
+      position:absolute;inset:0;
+      background:#f7ead6;
+      border:1px solid #d3b88d;
+      overflow:hidden;
+    }
+    .envelope-body::before{
+      content:"";position:absolute;inset:0;
+      clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
+      background:linear-gradient(145deg,#fff8ea,#ead5b5);
+    }
+    .envelope-body::after{
+      content:"";position:absolute;inset:0;
+      clip-path:polygon(0 100%,48% 44%,52% 44%,100% 100%);
+      background:rgba(255,255,255,.34);
+      border-top:1px solid rgba(170,130,79,.3);
+    }
+    .flap{
+      position:absolute;
+      z-index:6;
+      left:0;right:0;top:0;
+      height:98px;
+      transform-origin:top center;
+      transform-style:preserve-3d;
+      transition:transform .9s cubic-bezier(.2,.78,.18,1),z-index .01s linear .42s;
+    }
+    .flap::before{
+      content:"";position:absolute;inset:0;
+      clip-path:polygon(0 0,50% 92%,100% 0);
+      background:linear-gradient(155deg,#fffaf0,#e9d2af);
+      border-top:1px solid #d2b58d;
+    }
+    .entrance.opened .flap{transform:rotateX(180deg);z-index:0}
+
+    .seal{
+      position:absolute;
+      z-index:15;
+      left:50%;
+      top:53px;
+      width:66px;
+      height:66px;
+      transform:translateX(-50%);
+      border:0;
+      border-radius:50%;
+      cursor:pointer;
+      background:
+        radial-gradient(circle at 32% 28%,rgba(255,255,255,.2),transparent 25%),
+        radial-gradient(circle,#aa2940 0 52%,#85162c 53% 72%,#6f1024 73% 100%);
+      color:#ffe9c0;
+      box-shadow:0 7px 15px rgba(91,18,37,.35),inset 0 0 0 3px rgba(255,216,166,.16);
+      display:grid;
+      place-items:center;
+      transition:opacity .38s ease,transform .38s ease,filter .25s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .seal:hover{filter:brightness(1.06)}
+    .seal:active{transform:translateX(-50%) scale(.94)}
+    .seal svg{width:31px;height:31px}
+    .entrance.opened .seal{opacity:0;transform:translateX(-50%) scale(.35);pointer-events:none}
+
+    .date-card{
+      position:absolute;
+      z-index:3;
+      left:50%;
+      top:18px;
+      width:82%;
+      height:132px;
+      transform:translate(-50%,60px);
+      background:#fffaf0;
+      border:1px solid #d6ba8d;
+      text-align:center;
+      padding:24px 12px 12px;
+      color:var(--wine);
+      opacity:0;
+      transition:transform 1s cubic-bezier(.2,.75,.18,1) .25s,opacity .55s ease .25s;
+      box-shadow:0 8px 20px rgba(90,54,15,.13);
+    }
+    .date-card strong{display:block;font-size:20px;font-weight:600}
+    .date-card span{display:block;font-size:17px;margin-top:8px}
+    .date-card .mini{margin:13px auto 0;width:80px;height:1px;background:#d0aa6d;position:relative}
+    .date-card .mini::after{content:"✣";position:absolute;left:50%;top:50%;transform:translate(-50%,-51%);background:#fffaf0;padding:0 6px}
+    .entrance.opened .date-card{opacity:1;transform:translate(-50%,-62px)}
+
+    .entrance-bottom{
+      position:relative;
+      z-index:12;
+      text-align:center;
+      color:#754c3f;
+      min-height:64px;
+      display:grid;
+      place-items:center;
+    }
+    .tap-copy{font-size:14px;line-height:1.45;transition:opacity .3s ease}
+    .entrance.opened .tap-copy{opacity:0}
+    .continue-btn{
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-40%);
+      opacity:0;
+      pointer-events:none;
+      border:1px solid rgba(140,23,48,.33);
+      background:rgba(255,251,241,.82);
+      color:var(--wine);
+      border-radius:999px;
+      padding:10px 18px;
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      box-shadow:0 6px 18px rgba(78,43,13,.08);
+      transition:opacity .45s ease 1s,transform .45s ease 1s;
+      cursor:pointer;
+    }
+    .entrance.opened .continue-btn{opacity:1;pointer-events:auto;transform:translate(-50%,-50%)}
+
+    /* ---------- MAIN INVITATION ---------- */
+    .invite{
+      position:relative;
+      opacity:0;
+      transition:opacity .8s ease;
+      background:var(--ivory);
+    }
+    .invite.visible{opacity:1}
+
+    .topbar{
+      position:fixed;
+      z-index:70;
+      top:12px;
+      left:50%;
+      width:min(calc(100% - 28px),450px);
+      transform:translateX(-50%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+    .topbar button{
+      pointer-events:auto;
+      width:42px;height:42px;
+      border-radius:50%;
+      border:1px solid rgba(118,77,48,.18);
+      background:rgba(255,250,239,.85);
+      backdrop-filter:blur(8px);
+      color:var(--wine);
+      box-shadow:0 7px 18px rgba(72,45,18,.10);
+      cursor:pointer;
+    }
+    .progress{
+      pointer-events:none;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(255,250,239,.78);
+      backdrop-filter:blur(8px);
+      font-size:10px;
+      letter-spacing:.16em;
+      color:#775649;
+      text-transform:uppercase;
+      border:1px solid rgba(118,77,48,.12);
+    }
+
+    .section{
+      position:relative;
+      min-height:100dvh;
+      display:grid;
+      place-items:center;
+      padding:84px 26px 62px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 10%,rgba(255,255,255,.95),transparent 34rem),
+        linear-gradient(#fff9ee,#f6ead6);
+    }
+    .section + .section{border-top:1px solid rgba(160,116,65,.13)}
+    .section:nth-of-type(even){background:linear-gradient(165deg,#f8ebd5,#fffaf0 58%,#f1dfbf)}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+
+    .ornate-frame{
+      position:relative;
+      width:100%;
+      max-width:390px;
+      border:1px solid rgba(187,135,64,.52);
+      padding:34px 26px;
+      background:rgba(255,250,241,.72);
+      box-shadow:0 18px 50px rgba(92,56,21,.10),inset 0 0 0 5px rgba(255,255,255,.34);
+    }
+    .ornate-frame::before,.ornate-frame::after{
+      content:"✣";
+      position:absolute;
+      color:var(--wine);
+      font-size:18px;
+      background:var(--ivory);
+      padding:0 7px;
+    }
+    .ornate-frame::before{left:50%;top:-11px;transform:translateX(-50%)}
+    .ornate-frame::after{left:50%;bottom:-11px;transform:translateX(-50%)}
+
+    .hero{text-align:center}
+    .hero .home-medallion{
+      width:68px;height:68px;border-radius:50%;margin:0 auto 18px;
+      display:grid;place-items:center;
+      background:#fff4dc;
+      border:1px solid #d5b276;
+      color:var(--wine);
+      box-shadow:0 7px 17px rgba(110,67,25,.10);
+    }
+    .hero .home-medallion svg{width:35px;height:35px}
+    .hero .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8b6a54;margin-bottom:10px}
+    .hero h2{margin:0;color:var(--wine);font-size:clamp(35px,10vw,50px);line-height:.98;font-weight:500}
+    .hero .host{margin:12px 0 0;color:var(--wine);font-size:20px}
+    .hero .invite-line{margin:20px auto 0;max-width:280px;font-size:15px;line-height:1.65;color:#725549}
+    .event-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 0}
+    .meta-card{padding:14px 10px;background:#fffaf0;border:1px solid rgba(187,135,64,.32);min-height:86px;display:grid;place-items:center}
+    .meta-card b{display:block;color:var(--wine);font-size:17px;font-weight:500;margin-top:4px}
+    .meta-card small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a6a58}
+
+    .scroll-cue{margin-top:28px;color:#916a4c;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+    .scroll-cue::after{content:"↓";display:block;font-size:20px;margin-top:6px;animation:down 1.7s ease-in-out infinite}
+    @keyframes down{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(7px);opacity:1}}
+
+    .blessing{text-align:center;max-width:360px}
+    .blessing .tamil{font-size:19px;line-height:1.7;color:var(--wine);margin:0}
+    .blessing .source{font-size:13px;color:#8a6655;margin:8px 0 28px}
+    .blessing blockquote{margin:0;font-size:21px;line-height:1.55;color:#5c4035;font-style:italic}
+    .blessing blockquote span{display:block;margin-top:14px;color:var(--wine);font-size:14px;font-style:normal}
+
+    .photo-card{width:100%;max-width:390px;text-align:center}
+    .photo-wrap{position:relative;padding:9px;border:1px solid #d2ac71;background:#fffaf0;box-shadow:var(--shadow);border-radius:160px 160px 24px 24px}
+    .photo-wrap img{display:block;width:100%;aspect-ratio:1.08/1;object-fit:cover;object-position:center 42%;border-radius:150px 150px 18px 18px}
+    .photo-badge{position:absolute;left:50%;bottom:-31px;transform:translateX(-50%);width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#fff6e4;border:1px solid #d8b271;color:var(--wine);box-shadow:0 7px 18px rgba(87,52,17,.12)}
+    .photo-badge svg{width:32px;height:32px}
+    .details-title{margin:54px 0 5px;font-size:33px;color:var(--wine);font-weight:500}
+    .details-family{font-size:20px;color:var(--wine);margin:0}
+    .details-rule{width:110px;height:1px;background:#d3ad72;margin:18px auto}
+    .detail-line{display:flex;align-items:flex-start;justify-content:center;gap:11px;margin:11px auto;max-width:330px;color:#60483d;font-size:16px;line-height:1.45}
+    .detail-line svg{width:20px;height:20px;color:var(--wine);flex:none;margin-top:1px}
+
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+    .btn{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      min-height:46px;padding:9px 10px;
+      border-radius:8px;border:1px solid rgba(140,23,48,.52);
+      color:var(--wine);background:#fffaf0;text-decoration:none;cursor:pointer;
+      transition:transform .2s ease,background .2s ease;
+      font-size:13px;
+    }
+    .btn:hover{background:#fff3e0;transform:translateY(-1px)}
+    .btn svg{width:18px;height:18px}
+
+    .events-card{width:100%;max-width:390px}
+    .events-card h2{text-align:center;color:var(--wine);font-size:32px;margin:0 0 26px;font-weight:500}
+    .events{display:grid;gap:13px;margin:0;padding:0;list-style:none}
+    .events li{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:13px;color:#62384a;font-size:17px}
+    .event-icon{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#f7e3b9;color:var(--wine);border:1px solid rgba(187,135,64,.18)}
+    .event-icon svg{width:22px;height:22px}
+
+    .gift{text-align:center;max-width:360px}
+    .plant{width:125px;height:160px;margin:0 auto 23px;position:relative}
+    .pot{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:66px;height:55px;background:linear-gradient(90deg,#b4976f,#e0c99c,#a88a62);clip-path:polygon(8% 0,92% 0,80% 100%,20% 100%);box-shadow:0 7px 15px rgba(74,50,24,.13)}
+    .stem{position:absolute;left:61px;top:24px;width:4px;height:88px;background:#476943;border-radius:4px}
+    .plant-leaf{position:absolute;width:48px;height:26px;border-radius:100% 0 100% 0;background:linear-gradient(145deg,#5f8b4b,#2f5b36);transform-origin:0 50%}
+    .pl1{left:63px;top:28px;transform:rotate(-23deg)}.pl2{left:62px;top:54px;transform:rotate(205deg)}.pl3{left:63px;top:72px;transform:rotate(11deg)}.pl4{left:62px;top:92px;transform:rotate(190deg)}
+    .gift p{font-size:17px;line-height:1.6;color:#644c40;margin:0}
+    .gift .closing{font-size:28px;color:var(--wine);font-style:italic;margin-top:28px;line-height:1.25}
+    .share-btn{margin:26px auto 0;width:min(260px,100%);background:var(--wine);color:#fff7e8;border-color:var(--wine)}
+    .footer{margin-top:30px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#866653}
+
+    .toast{
+      position:fixed;z-index:200;left:50%;bottom:24px;transform:translate(-50%,24px);
+      width:min(calc(100% - 40px),390px);padding:12px 16px;border-radius:999px;text-align:center;
+      background:#651126;color:#fff7e8;font-size:13px;opacity:0;pointer-events:none;transition:.3s ease;
+      box-shadow:0 12px 30px rgba(61,15,27,.25)
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media (min-width:700px){
+      body{padding:28px 0}
+      .app-shell{border-radius:30px;min-height:calc(100dvh - 56px)}
+      .entrance{top:28px;bottom:28px;min-height:auto;border-radius:30px;box-shadow:var(--shadow)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+
+    <!-- Opening experience -->
+    <section class="entrance paper-noise" id="entrance" aria-label="Opening house warming invitation">
+      <svg class="corner-flower tl" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M12 190C46 141 67 95 84 22" fill="none" stroke="#476943" stroke-width="4"/>
+        <g fill="#fffdf3" stroke="#dbc98f" stroke-width="1.2">
+          <circle cx="45" cy="128" r="12"/><circle cx="63" cy="103" r="10"/><circle cx="72" cy="75" r="12"/><circle cx="82" cy="48" r="9"/><circle cx="34" cy="148" r="9"/>
+        </g>
+        <g fill="#d9b84c"><circle cx="45" cy="128" r="3"/><circle cx="63" cy="103" r="3"/><circle cx="72" cy="75" r="3"/><circle cx="82" cy="48" r="3"/><circle cx="34" cy="148" r="3"/></g>
+        <g fill="#466c3d"><ellipse cx="53" cy="116" rx="18" ry="8" transform="rotate(-35 53 116)"/><ellipse cx="72" cy="91" rx="18" ry="8" transform="rotate(-12 72 91)"/><ellipse cx="79" cy="61" rx="18" ry="8" transform="rotate(18 79 61)"/></g>
+      </svg>
+      <svg class="corner-flower br" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M12 190C46 141 67 95 84 22" fill="none" stroke="#476943" stroke-width="4"/>
+        <g fill="#fffdf3" stroke="#dbc98f" stroke-width="1.2">
+          <circle cx="45" cy="128" r="12"/><circle cx="63" cy="103" r="10"/><circle cx="72" cy="75" r="12"/><circle cx="82" cy="48" r="9"/><circle cx="34" cy="148" r="9"/>
+        </g>
+        <g fill="#d9b84c"><circle cx="45" cy="128" r="3"/><circle cx="63" cy="103" r="3"/><circle cx="72" cy="75" r="3"/><circle cx="82" cy="48" r="3"/><circle cx="34" cy="148" r="3"/></g>
+        <g fill="#466c3d"><ellipse cx="53" cy="116" rx="18" ry="8" transform="rotate(-35 53 116)"/><ellipse cx="72" cy="91" rx="18" ry="8" transform="rotate(-12 72 91)"/><ellipse cx="79" cy="61" rx="18" ry="8" transform="rotate(18 79 61)"/></g>
+      </svg>
+
+      <header class="entrance-copy">
+        <div class="eyebrow">Traditional roots · blessed beginnings</div>
+        <h1>A New Home <span aria-hidden="true">✣</span> A Brighter Tomorrow</h1>
+        <div class="divider"><span>✣</span></div>
+        <div class="family">With love, <strong>Sundar &amp; Family</strong></div>
+      </header>
+
+      <div class="ceremony-stage" aria-hidden="true">
+        <div class="thali"></div>
+        <div class="botanical">
+          <i class="leaf l1"></i><i class="leaf l2"></i><i class="leaf l3"></i><i class="leaf l4"></i><i class="leaf l5"></i>
+          <i class="coconut"></i><i class="banana"></i><i class="apple"></i>
+          <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i>
+          <i class="daisy d1"><span></span><span></span><span></span><span></span><span></span><span></span></i>
+          <i class="daisy d2"><span></span><span></span><span></span><span></span><span></span><span></span></i>
+          <i class="daisy d3"><span></span><span></span><span></span><span></span><span></span><span></span></i>
+        </div>
+
+        <div class="envelope-wrap">
+          <div class="date-card">
+            <strong>Friday, 2 October</strong>
+            <span>6:00 PM</span>
+            <div class="mini"></div>
+          </div>
+          <div class="envelope-body"></div>
+          <div class="flap"></div>
+          <button class="seal" id="seal" type="button" aria-label="Open invitation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="entrance-bottom">
+        <div class="tap-copy"><span aria-hidden="true">✣</span><br>Tap the house seal to open the invitation</div>
+        <button class="continue-btn" id="continueBtn" type="button">Enter invitation ↓</button>
+      </div>
+    </section>
+
+    <!-- Full invitation -->
+    <article class="invite" id="invite">
+      <div class="topbar" id="topbar">
+        <button id="homeBtn" type="button" aria-label="Return to invitation cover">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </button>
+        <div class="progress" id="progress">Welcome · 1/4</div>
+      </div>
+
+      <section class="section" data-label="Welcome">
+        <div class="ornate-frame hero reveal">
+          <div class="home-medallion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          </div>
+          <div class="kicker">With gratitude and joy</div>
+          <h2>House<br>Warming</h2>
+          <p class="host">Sundar &amp; Family</p>
+          <div class="divider"><span>✣</span></div>
+          <p class="invite-line">We warmly invite you to share in the blessing of our new home and celebrate this new chapter with us.</p>
+          <div class="event-meta">
+            <div class="meta-card"><div><small>Date</small><b>Friday<br>2 October</b></div></div>
+            <div class="meta-card"><div><small>Time</small><b>6:00 PM</b></div></div>
+          </div>
+          <div class="scroll-cue">Scroll to continue</div>
+        </div>
+      </section>
+
+      <section class="section" data-label="Blessing">
+        <div class="blessing reveal">
+          <div class="divider"><span>✣</span></div>
+          <p class="tamil" lang="ta">அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை<br>பண்பும் பயனும் அது.</p>
+          <p class="source">— திருக்குறள் 45</p>
+          <blockquote>
+            “My people will live in peaceful dwelling places, in secure homes, in undisturbed places of rest.”
+            <span>— Isaiah 32:18</span>
+          </blockquote>
+          <div class="divider" style="margin-top:30px"><span>✣</span></div>
+        </div>
+      </section>
+
+      <section class="section" data-label="Details">
+        <div class="photo-card reveal">
+          <div class="photo-wrap">
+            <img src="assets/house.jpg" alt="The new home at Blair Street, Ripley" />
+            <div class="photo-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+            </div>
+          </div>
+          <h2 class="details-title">House Warming</h2>
+          <p class="details-family">Sundar &amp; Family</p>
+          <div class="details-rule"></div>
+          <div class="detail-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            <span>Friday, 2 October<br><strong>6:00 PM</strong></span>
+          </div>
+          <div class="detail-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>1/24 Blair Street, Ripley</span>
+          </div>
+          <div class="actions">
+            <button class="btn" id="calendarBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+              Add to Calendar
+            </button>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=1%2F24%20Blair%20Street%2C%20Ripley" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Get Directions
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-label="Programme">
+        <div class="ornate-frame events-card reveal">
+          <h2>Order of Events</h2>
+          <ul class="events">
+            <li><span class="event-icon">🙏</span><span>Opening prayer</span></li>
+            <li><span class="event-icon">✝</span><span>Worship</span></li>
+            <li><span class="event-icon">▣</span><span>Message</span></li>
+            <li><span class="event-icon">♟</span><span>Testimony</span></li>
+            <li><span class="event-icon">🙏</span><span>Closing prayer</span></li>
+            <li><span class="event-icon">🕊</span><span>Benediction</span></li>
+            <li><span class="event-icon">♨</span><span><em>Paal Kaaichudhal</em></span></li>
+            <li><span class="event-icon">🍴</span><span>Dinner</span></li>
+            <li><span class="event-icon">♟</span><span>Fellowship</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" data-label="Together">
+        <div class="gift reveal">
+          <div class="plant" aria-hidden="true">
+            <i class="stem"></i><i class="plant-leaf pl1"></i><i class="plant-leaf pl2"></i><i class="plant-leaf pl3"></i><i class="plant-leaf pl4"></i><i class="pot"></i>
+          </div>
+          <div class="divider"><span>✣</span></div>
+          <p><strong>Your presence is my present.</strong><br>If you would like to bring a gift, a plant would mean a lot to me — something that can grow with my new home and remind me of you whenever I see it.</p>
+          <p class="closing">We look forward to<br>celebrating with you.</p>
+          <button class="btn share-btn" id="shareBtn" type="button">Share invitation</button>
+          <div class="footer">Home · Faith · Family · Friends<br><br>All are welcome</div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const entrance = document.getElementById('entrance');
+    const seal = document.getElementById('seal');
+    const continueBtn = document.getElementById('continueBtn');
+    const invite = document.getElementById('invite');
+    const homeBtn = document.getElementById('homeBtn');
+    const progress = document.getElementById('progress');
+    const toast = document.getElementById('toast');
+    let opened = false;
+
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    function openEnvelope(){
+      if(opened) return;
+      opened = true;
+      entrance.classList.add('opened');
+    }
+
+    function enterInvite(){
+      if(!opened) openEnvelope();
+      entrance.classList.add('exit');
+      invite.classList.add('visible');
+      document.body.style.overflow = '';
+      setTimeout(() => window.scrollTo({top:0,behavior:'auto'}), 40);
+    }
+
+    seal.addEventListener('click', openEnvelope);
+    continueBtn.addEventListener('click', enterInvite);
+
+    // A second tap on the revealed date card area also proceeds, matching invitation-app behaviour.
+    entrance.addEventListener('click', e => {
+      if(opened && !e.target.closest('button') && e.clientY > innerHeight * .32 && e.clientY < innerHeight * .8){
+        enterInvite();
+      }
+    });
+
+    homeBtn.addEventListener('click', () => {
+      entrance.classList.remove('exit');
+      entrance.classList.remove('opened');
+      invite.classList.remove('visible');
+      opened = false;
+      window.scrollTo({top:0,behavior:'auto'});
+    });
+
+    // Reveal content as it enters view and update section progress.
+    const sections = [...document.querySelectorAll('.section')];
+    const reveals = [...document.querySelectorAll('.reveal')];
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, {threshold:.18});
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!visible) return;
+      const i = sections.indexOf(visible.target);
+      progress.textContent = `${visible.target.dataset.label} · ${i+1}/${sections.length}`;
+    }, {threshold:[.35,.55,.7]});
+    sections.forEach(s => sectionObserver.observe(s));
+
+    document.getElementById('calendarBtn').addEventListener('click', () => {
+      const ics = [
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Sundar Family//House Warming//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT',
+        'UID:housewarming-20261002-sundar-family','DTSTAMP:20260920T020000Z',
+        'DTSTART;TZID=Australia/Brisbane:20261002T180000','DTEND;TZID=Australia/Brisbane:20261002T220000',
+        'SUMMARY:House Warming — Sundar & Family','LOCATION:1/24 Blair Street\\, Ripley',
+        'DESCRIPTION:House Warming celebration with Sundar & Family. All are welcome.','END:VEVENT','END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Sundar-Family-House-Warming.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      showToast('Calendar file created');
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const data = {
+        title:'House Warming — Sundar & Family',
+        text:'You are warmly invited to our house warming on Friday, 2 October at 6:00 PM.',
+        url:location.href
+      };
+      try{
+        if(navigator.share){ await navigator.share(data); }
+        else if(navigator.clipboard){ await navigator.clipboard.writeText(`${data.text} ${data.url}`); showToast('Invitation link copied'); }
+        else{ showToast('Copy the page link to share this invitation'); }
+      }catch(err){ if(err.name !== 'AbortError') showToast('Sharing was not available'); }
+    });
+
+    // Keep the entrance fixed without background scroll until the invitation is entered.
+    document.body.style.overflow = 'hidden';
+  </script>
+</body>
+</html>
